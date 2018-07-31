@@ -1,0 +1,5 @@
+print("This is python-sktch")
+print("Hello"+"\n"+"1234")
+print(12+34+5.6)
+print(0x10001100)
+print(645*233)
