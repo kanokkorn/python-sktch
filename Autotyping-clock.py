@@ -1,12 +1,6 @@
 import time 
-import os
+import sys 
 
-class clock:
-    pass
-    def __init__(self):
-        
-        return(none)
-    def autotype(self):
-        for i in range(10):
-            os.g
-        return(none)
+while 1:
+    print(time.asctime(time.localtime(time.time())))
+    time.sleep(1)

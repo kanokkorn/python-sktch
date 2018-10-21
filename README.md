@@ -1,2 +1,2 @@
 # python-sktch
-sketch for python3
+my python 3 sketching 
