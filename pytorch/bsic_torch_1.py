@@ -1,4 +1,6 @@
-# From https://phyblas.hinaboshi.com/tomoshibi14
+# Pytorch Using GPU
+# Code From https://phyblas.hinaboshi.com/tomoshibi14
+
 
 import numpy as np
 import matplotlib.pyplot as plt
