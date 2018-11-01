@@ -1,2 +1,3 @@
 # python-sktch
-my python 3 sketching 
+python 3 sketching <br>
+using &nbsp;```pip install -r requires.txt``` &nbsp;for install python package
