@@ -1,6 +1,4 @@
 tensorflow
-tensorflow-gpu
 cntk
-cntk-gpu
 torch
 torchvision
