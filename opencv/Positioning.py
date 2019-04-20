@@ -21,7 +21,6 @@ while True:
     cv2.lineline(imgray, pt1, pt2, color[, thickness[, lineType[, shift]]])
     cv2.imshow("Observer", imgray)
     
-    # Press 'Q' to exit program
     if cv2.waitKey(1) & 0xff == ord('q'):
         break
 
