@@ -1,8 +1,9 @@
 import tensorflow as tf
 import numpy as np 
+from matplotlib import pyplot as plt
 
-cel = np.array([-40, -10, 0, 8, 15, 22, 38], dtype = float)
-fah = np.array([-40, 14, 32, 46, 56, 72, 100], dtype = float)
+cel = np.array([0, 1, 2, 3, 4, 5, 6], dtype = float)
+fah = np.array([1, 3, 5, 7, 9, 11, 13], dtype = float)
 
 for i, c in enumerate(cel):
     print("{} degree Celsius = {} degrees Fahenheit".format(c, fah[i]))
@@ -19,4 +20,4 @@ plt.xlabel("Epoch")
 plt.ylabel("Loss")
 plt.plot(history.history['loss'])
 
-print(model.predict([100, 41]))
+print(model.predict([84501, 10000]))
