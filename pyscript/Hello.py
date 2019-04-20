@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-img = cv2.imread('C:\\Users\\kanok\\Downloads\\shounee.png',0)
+img = cv2.imread('img/shyaro.jpg',0)
 edges = cv2.Canny(img,200,400)
 
 plt.subplot(121),plt.imshow(img,cmap = 'gray')

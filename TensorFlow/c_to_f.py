@@ -20,4 +20,4 @@ plt.xlabel("Epoch")
 plt.ylabel("Loss")
 plt.plot(history.history['loss'])
 
-print(model.predict([84501, 10000]))
+print(model.predict([100, 41]))
