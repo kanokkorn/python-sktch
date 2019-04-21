@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import random
 import time
 
@@ -19,5 +21,7 @@ if __name__ == "__main__":
             cout_a += 1
         if bet() == 1:
             cout_b += 1
+        print(bet())
+        time.sleep(0.02)
     print(" === Result === \n Player: %d times\n Banker: %d times" % (cout_a, cout_b))
 
