@@ -4,7 +4,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 
 current_dir = "./img"
 
-percentage = 20
+percentage = 15
 
 train_file = open("train.txt", "w")
 test_file = open("test.txt", "w")
