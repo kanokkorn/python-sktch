@@ -1,16 +1,16 @@
-import random 
-import time 
+import random
+import time
+
 
 def compara(x, y):
     if x > y:
-        print("X is "+str(x)+" Y is "+str(y))
-        return print("Increase")
+        return print("X is %.3d | Y is %.3d | Increase"%(x, y))
+
     if x < y:
-        print("X is "+str(x)+" Y is "+str(y))
-        return print("Decrease")
+        return print("X is %.3d | Y is %.3d | Decrease"%(x, y))
+
     if x == y:
-        print("X is "+str(x)+" Y is "+str(y))
-        return print("Equal") 
+        return print("X is %.3d | Y is %.3d | Equal"%(x, y))
 
 
 if __name__ == "__main__":
@@ -18,9 +18,9 @@ if __name__ == "__main__":
     try:
         for x in range(100):
             b[0] = random.randint(0, 100)
-            compara(b[0],b[1])
+            compara(b[0], b[1])
             b[1] = b[0]
-            time.sleep(0.5) 
+            time.sleep(0.5)
 
     except KeyboardInterrupt as err:
         raise Exception
