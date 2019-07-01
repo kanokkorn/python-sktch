@@ -1,7 +1,0 @@
-opencv-python
-opencv-copntrib-python
-pyzbar
-tensorflow
-cntk
-torch
-torchvision
