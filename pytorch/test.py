@@ -118,3 +118,4 @@ if __name__ == "__main__":
     plt.title('The cliff walking task via Q-learning')
     plt.grid(True)
     plt.show()
+
