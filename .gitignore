@@ -1,3 +1,4 @@
 /.vscode/
 /pyautogui/image/
 /pytorch/__pycache__/
+*.*swp
