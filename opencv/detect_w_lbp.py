@@ -52,8 +52,3 @@ def detect_w_lbp():
 if __name__ == "__main__":
     detect_w_lbp()
 
-
-
-
-
-
