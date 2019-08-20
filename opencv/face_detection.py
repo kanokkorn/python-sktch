@@ -1,5 +1,7 @@
 import cv2
-import os, time, sys
+import os
+import time
+import sys
 
 face_cascade = cv2.CascadeClassifier("C:\\Users\\kanok\\Documents\\lbpcascade_animeface.xml")
 cv2.ocl.setUseOpenCL(1)
@@ -25,5 +27,4 @@ while 1:
         break
     cap.release()
     cv2.destroyAllWindows()
-
 
