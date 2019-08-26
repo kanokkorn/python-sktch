@@ -38,7 +38,7 @@ def detect_w_lbp():
                 cv2.rectangle(img, (x, y), (x+w, y+h), (65, 238, 244), 3)
                 #cv2.imshow("Syaro", roi_color)
                 face_name = "Syaro"
-                cv2.putText(img,str(face_name), (x, y), cv2.FONT_HERSHEY_DUPLEX, 2, (65, 244, 71))
+                cv2.putText(img,str(face_name), (x, y), cv2.FONT_HERSHEY_DUPLEX, 2, (65, 238, 244))
             elif face_id == 5:
                 cv2.rectangle(img, (x, y), (x+w, y+h), (65, 244, 71), 3)
                 #cv2.imshow("Chiya", roi_color)
