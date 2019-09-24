@@ -9,4 +9,3 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as soc:
   data = soc.recv(1024)
 
 print("Received ", repr(data))
-
