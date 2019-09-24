@@ -8,4 +8,3 @@ with open("demo.csv", newline="") as csv_file:
             print(data_row)
         except IndexError:
             exit()
-
