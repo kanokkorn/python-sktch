@@ -621,3 +621,4 @@ if __name__ == "__main__":
 
     # try the model out in an interactive session
     interactive_session(model, vocab, i2w, show_attention=True)
+
