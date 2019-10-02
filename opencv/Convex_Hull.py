@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt 
 
-img = cv2.imread('img/shyaro.jpg')
+img = cv2.imread('../img/shyaro.jpg')
 img_gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 ret, thresh = cv2.threshold(img_gray, 127, 255,0)
 contours,hierarchy = cv2.findContours(thresh,2,1)

@@ -9,5 +9,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as soc:
     soc.listen()
     conn, addr = soc.accept()
     print("Connected by", addr)
-    data = conn.send(bytes("Hello", "utf-8"))
+    while True:
+      data = conn.recv(1024)
+      if not data:
+        break
+      conn.sendall(data)
 
