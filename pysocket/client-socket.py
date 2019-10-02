@@ -5,8 +5,7 @@ port = 34567
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as soc:
   soc.connect((host, port))
-  soc.sendall(b"Hello world")
-  data = soc.recv(1024)
+  data = soc.recv(102400)
 
 print("Received ", repr(data))
 
