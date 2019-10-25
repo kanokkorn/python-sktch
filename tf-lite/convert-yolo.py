@@ -1,7 +1,7 @@
 import os
 import tensorflow as tf
 
-from tensorflow.contrib.lite.python import lite
+from tensorflow.contrib.lite.python import convert_saved_model as lite # DEAD C0DE
 from tensorflow.keras import Input, Model
 
 from darknet import darknet_base
