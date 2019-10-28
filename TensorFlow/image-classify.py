@@ -18,6 +18,6 @@ def get_dirname(dirlist):
     return print('cant find name of folders')
   else:
     for x in range(len(dirlist)+1):
-      
-      
+      train_path = os.path.join(train_dir, str(dirlist[x]))
+
 
