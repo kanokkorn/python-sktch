@@ -52,5 +52,11 @@ model = Sequential([
   Dense(1, activation='sigmoid')
 ])
 
+# compile model
+model.compile(
+  optimizer='adam',
+  loss='binary_crossentropy',
+  metrics=['accuracy'])
+
 if __name__ == '__main__':
   read_config('config.json')
