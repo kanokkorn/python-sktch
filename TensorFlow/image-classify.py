@@ -10,8 +10,10 @@ import os
 import numpy
 import matplotlib.pyplot as plt
 
-train_dir = os.path.join(PATH, 'train')
-validation_dir = os.path.join(PATH, 'valid')
+def set_path():
+  PATH = os.path.join(os.path.dirname('dataset'))
+  train_dir = os.path.join(PATH, 'train')
+  validation_dir = os.path.join(PATH, 'valid')
 
 # get folders list
 def get_dirname(dirlist):
@@ -23,14 +25,32 @@ def get_dirname(dirlist):
 
 # read config from JSON 
 def read_config(filename):
-  with open('config.json', 'r') as config:
-    config_data = config.read()
-  obj = json.loads(data)
-  batch = int(obj['batch'])
-  epochs = int(obj['epochs'])
-  width = int(obj['width'])
-  height = int(obj['height'])
+  if str(filename) is not 'config.json':
+    return print('file not found')
+  else:
+    with open(str(filename), 'r') as config:
+      config_data = config.read()
+    obj = json.loads(data)
+    batch = int(obj['batch'])
+    epochs = int(obj['epochs'])
+    width = int(obj['width'])
+    height = int(obj['height'])
 
 # preparation
 def prepare():
+  pass
 
+# model goes here
+model = Sequential([
+  Conv2D(16, 3, padding='same', activation='relu', input_shape=(img_h, img_w, 3)),
+  MaxPooling(),
+  Conv2D(32, 3. padding='same', activation='relu'),
+  MaxPooling2D(),
+  Conv2D(64, 3, padding='same', activation='relu'),
+  Flatten(),
+  Dense(512, activation='relu'),
+  Dense(1, activation='sigmoid')
+])
+
+if __name__ == '__main__':
+  read_config('config.json')
