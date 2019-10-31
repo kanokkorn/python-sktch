@@ -1,5 +1,5 @@
 import torch
-from torchvision import models
-from torch.utils.data import Dataset, Dataloader
+import torchvision.transform as transforms
+from torchvision import models, datasets, transform
 
-print(dir(models))
+torch.vision.models.inception_v3(pretrained=True, progress=True)
