@@ -1,5 +1,3 @@
-import torch
-import torchvision.transform as transforms
-from torchvision import models, datasets, transform
+import torchvision.models as models
 
-torch.vision.models.inception_v3(pretrained=True, progress=True)
+gochi = models.mobilenet_v2(pretrained=True, progress=True)
