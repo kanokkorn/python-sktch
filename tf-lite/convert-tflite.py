@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
 
-model = tf.keras.application.MobileNetV2(
+model = tf.keras.applications.MobileNetV2(
         weight='imagenet', input_shape=(224, 224, 3))
 converter = tf.lite.TFLiteConverter.from_keras_model(model)
 tflite_model = converter.convert()
