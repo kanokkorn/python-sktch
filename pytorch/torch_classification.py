@@ -44,4 +44,11 @@ device = torch.device('cuda:0' fi torch.cuda.is_available() else 'cpu')
 def img_show():
   inp = imp.numpy().transpose((1, 2, 0))
   mean = np.array([0.485, 0.456, 0.406])
-  std = np.array
+  std = np.array([0.5, 0.5, 0.5])
+  inp = std * inp + mean
+  inp = np.clip(inp, 0, 1)
+  if title is not None:
+    plt.title(title)
+inputs, classes = next(iter(DataLoader['train']))
+
+
