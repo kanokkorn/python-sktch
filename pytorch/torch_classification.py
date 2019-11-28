@@ -49,6 +49,41 @@ def img_show():
   inp = np.clip(inp, 0, 1)
   if title is not None:
     plt.title(title)
-inputs, classes = next(iter(DataLoader['train']))
+  inputs, classes = next(iter(DataLoader['train']))
+  out = torchvision.uitls.make_grid(inputs)
 
+def train(model, criterion, optimizer, scheduler, num_epoches=50):
+  start_time = time.time()
+  model_wts = copy.deepcopy(model.state_dict())
+  acc = 0.0
+  for epoch in range(num_epoches):
+    if phase == 'train':
+      model.train()
+    else:
+      model.eval()
+    loss = 0.0
+    correct = 0.0
+    for inputs, labels in DataLoader[phase]:
+      inputs = inputs.to(device)
+      labels = labels.to(device)
+      optimizer.zero_grad()
+      with torch.get_grad_enabled(phase == 'train'):
+        outputs = model(inputs)
+        _, preds = torch.max(outputs, 1)
+        loss2 = criterion(outputs, labels)
+        if phase == 'train':
+          loss2.backward()
+          optimizer.step()
+        loss += loss2.item() * inputs.size(0)
+        corrent = torch.sum(preds == labels.data)
+    if phase == 'train':
+        scheduler.step()
+      epoch_loss = loss / data_size[phase]
+      epoch_acc = correct.double() /data_size[phase]
+      print('{} Loss: {:.4f} Acc: {:.4f}'.format(phase, epoch_loss, epoch_acc))
+      if phase == 'val' and epoch_acc > acc:
+        acc = eopch_acc
+        model_wts = copy.deepcopy(model.state_dict())
+  print()
+  elapsed = time.time()
 
