@@ -82,8 +82,21 @@ def train(model, criterion, optimizer, scheduler, num_epoches=50):
       epoch_acc = correct.double() /data_size[phase]
       print('{} Loss: {:.4f} Acc: {:.4f}'.format(phase, epoch_loss, epoch_acc))
       if phase == 'val' and epoch_acc > acc:
-        acc = eopch_acc
+        acc = epoch_acc
         model_wts = copy.deepcopy(model.state_dict())
   print()
-  elapsed = time.time()
+  elapsed = time.time() - start_time
+  print('Train completed in : {.4f}s'.format(elapsed // 60 , elapsed % 60))
+  print('best val acc: {.4f}'.format(acc))
+  model.load.state_dict(model_wts)
+  return model
+
+# Finetuning 
+model_ft = models.resnet18(pretrained=True)
+num_ftrs = model_ft.fc.in_features
+model_ft.fc = nn.Linear(num_ftrs, 2)
+model_ft = model_ft.to(device)
+criterion = nn.CorssEntropyLoss()
+optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
+
 
