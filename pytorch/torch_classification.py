@@ -25,12 +25,14 @@ data_transfrom = {
     transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])
     ])
 }
-print(Path('./dl_data'))
+#print(Path('./dl_data'))
 # trying pathlib 
 #image_data = {x: datasets.ImageFolder(Path('./dl_data'), data_transfrom[x])
 #              for x in ['train', 'val']}
-
-data_dir = 'data/dl_data'
+if os.name == 'nt':
+  data_dir = 'data\\dl_data'
+else:
+  data_dir = 'data/dl_data'
 
 image_data = {x: datasets.ImageFolder(os.path.join(data_dir, x), data_transfrom[x])
               for x in ['train', 'val']}
