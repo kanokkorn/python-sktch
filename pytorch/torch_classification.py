@@ -39,7 +39,7 @@ data_loader = {x: torch.utils.data.DataLoader(image_datap[x], batch_size=4, shuf
 data_size = {x: len(image_data[x]) for x in ['train', 'val']}
 classes = image_data['train'].classes
 
-device = torch.device('cuda:0' fi torch.cuda.is_available() else 'cpu')
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 def img_show():
   inp = imp.numpy().transpose((1, 2, 0))
@@ -77,14 +77,14 @@ def train(model, criterion, optimizer, scheduler, num_epoches=50):
         loss += loss2.item() * inputs.size(0)
         corrent = torch.sum(preds == labels.data)
     if phase == 'train':
-        scheduler.step()
-      epoch_loss = loss / data_size[phase]
-      epoch_acc = correct.double() /data_size[phase]
-      print('{} Loss: {:.4f} Acc: {:.4f}'.format(phase, epoch_loss, epoch_acc))
-      if phase == 'val' and epoch_acc > acc:
-        acc = epoch_acc
-        model_wts = copy.deepcopy(model.state_dict())
-  print()
+      scheduler.step()
+    epoch_loss = loss / data_size[phase]
+    epoch_acc = correct.double() /data_size[phase]
+    print('{} Loss: {:.4f} Acc: {:.4f}'.format(phase, epoch_loss, epoch_acc))
+    if phase == 'val' and epoch_acc > acc:
+      acc = epoch_acc
+      model_wts = copy.deepcopy(model.state_dict())
+    print()
   elapsed = time.time() - start_time
   print('Train completed in : {.4f}s'.format(elapsed // 60 , elapsed % 60))
   print('best val acc: {.4f}'.format(acc))
@@ -98,5 +98,5 @@ model_ft.fc = nn.Linear(num_ftrs, 2)
 model_ft = model_ft.to(device)
 criterion = nn.CorssEntropyLoss()
 optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
-
-
+exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=7, gamma=0.1)
+model_ft = train(model_ft, criterion, optimizer_ft, exp_lr_scheduler, num_epoches=50)
