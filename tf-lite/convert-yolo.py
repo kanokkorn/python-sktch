@@ -1,5 +1,5 @@
 import os
-import tensorflow as tf
+import tensorflow as tf # TensorFlow version 1.x only!
 
 from tensorflow.contrib.lite.python import convert_saved_model as lite # DEAD C0DE
 from tensorflow.keras import Input, Model
