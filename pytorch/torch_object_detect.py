@@ -87,4 +87,19 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
         best_acc = epoch_acc
         best_model_tws = copy.deepcopy(model.state_dict())
     print()
+  time_elapsed = time.time() - since
+  print('training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
+  print('Best val acc: {:4f}'.format(best_acc))
+  model.load_state_dict(best_model_wts)
+  return model
+
+model_conv = torchvision.models.mobilenet_v2(pretrained=True)
+for param in model_conv,parameters():
+  param.requires_grad = False
+num_ftrs = model_conv.fc.in_features
+model_conv.fc = nn.Linear(num_ftrs, 2)
+model_conv = model_conv.to(device)
+criterion = nn.CrossEntropyLoss()
+optimizer_conv = optim.SGD(model_conv.fc.parameters(), lr=0.001, momentum=0.9)
+exp_lr_scheduler = lr_scheduler.StepLR(optimizer_conv, step_size=7, gemma=0.1)
 
