@@ -5,3 +5,6 @@ def softmax(L):
         x += pow(math.e, i)
     return pow(math.e, len(L)) / x
 
+if __name__ == '__main__':
+    ans = input('enter number: ')
+    print(softmax(ans))

@@ -1,8 +1,12 @@
 from torchvision import transforms
 from PIL import Image
 import torch
+<<<<<<< Updated upstream
 model = torch.hub.load('pytorch/vision:v0.4.2', 'deeplabv3_resnet101', pretrained=True)
 model.eval()
+=======
+model = torch.hub.load('pytorch/vision:0.4.2', 'deeplabv3_resnet101', pretrained=True)
+>>>>>>> Stashed changes
 
 def detect(filename):
   input_img = Image.open(filename)
