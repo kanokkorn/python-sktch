@@ -3,7 +3,6 @@ import torchvision
 from torchvision import transforms
 from PIL import Image
 
-
 model = model.load_state_dict(torch.load('gochi-trained.pth'))
 model.eval()
 transform = transforms.Compose([
@@ -21,7 +20,7 @@ def predict(path):
   if torch.cuda.is_available():
     img_tensor = img_trans.view(1, 3, 224, 224).cuda
   else:
-    img_tensor = img_trans.view(1, 3, 224, 224).cuda
+    img_tensor = img_trans.view(1, 3, 224, 224)
   
   with torch.no_grad():
     out = model(img_tensor)
