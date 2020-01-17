@@ -21,7 +21,8 @@ def predict(path):
     img_tensor = img_trans.view(1, 3, 224, 224).cuda
   else:
     img_tensor = img_trans.view(1, 3, 224, 224)
-  
+  np_image = img_tensor.numpy()
+
   with torch.no_grad():
     out = model(img_tensor)
     pred = torch.exp(out)
