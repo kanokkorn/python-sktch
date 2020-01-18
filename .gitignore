@@ -1,8 +1,8 @@
 /.vscode/
 /pyautogui/image/
 *.*swp
+*.*orig
 /pytorch/__pycache__/
-*.*swp
 *.*txt
 /opencv/image_save/
 /opencv/lbp_folder/
