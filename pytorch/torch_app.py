@@ -5,18 +5,8 @@ from torchvision import transforms
 from PIL import Image
 
 def preprocess(img_path):
-  if path is None:
+  if img_path is None:
     return None
-  img_trans = transform(img)
-  if torch.cuda.is_available():
-    img_tensor = img_trans.view(1, 3, 224, 224).cuda
-  else:
-    img_tensor = img_trans.view(1, 3, 224, 224)
-  np_image = img_tensor.numpy()
-
-def predict(model_path):
-  model = torch.load(model_path)
-  model.eval()
   transform = transforms.Compose([
       transforms.Resize(256),
       transforms.CenterCrop(224),
@@ -25,6 +15,17 @@ def predict(model_path):
         mean=[0.485, 0.456, 0.406],
         std=[0.229, 0.224, 0.225])
       ])
+  img_trans = transform(img_path)
+  if torch.cuda.is_available():
+    img_tensor = img_trans.view(1, 3, 224, 224).cuda
+  else:
+    img_tensor = img_trans.view(1, 3, 224, 224)
+  np_image = img_tensor.numpy()
+  return np_image
+
+def predict(model_path):
+  model = torch.load(model_path)
+  model.eval()
   with torch.no_grad():
     out = model(img_tensor)
     pred = torch.exp(out)
@@ -49,9 +50,8 @@ if __name__ == '__main__':
       type=str,
       help='path to model'
       )
-  args = vars(arg.parse_agrs())
+  args = vars(arg.parse_args())
   preprocess(args['image'])
-  
 
 else:
-  predict(path)
+  predict(image_path)
