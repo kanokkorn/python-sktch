@@ -19,4 +19,15 @@ def convert_onnx(path):
       )
 
 if __name__ == '__main__':
-  convert_onnx(input('input path: '))
+  arg = argparse.ArgumentParser(
+      description = 'Convert Pytorch model to ONNX format'
+      )
+  arg.add_argument(
+      '-i',
+      '--input',
+      required = True,
+      help = 'Path to models'
+      )
+  args = vars(arg.parse_args())
+  convert_onnx(args['input'])
+
