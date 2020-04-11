@@ -1,5 +1,6 @@
 import random
 import time
+import torch
 
 class card(object):
   def __init__(self, suit, val):
@@ -41,10 +42,12 @@ class player(object):
   def showHand(self):
     for card in self.hand:
       card.show()
-  
+
   def discard(self):
     self.hand.pop()
 
 if __name__ == "__main__":
   deck = deck()
+  deck.build()
   deck.shuffle()
+  deck.drawCard()
