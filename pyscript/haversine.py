@@ -1,6 +1,6 @@
 import math
 
-def hsin(current_lat, current_lonm destinate_lat, destinate_lon):
+def hsin(current_lat, current_lon, destinate_lat, destinate_lon):
   earth_radius = 6371e3
   lat_a = math.radians(current_lat)
   lat_b = math.radians(destinate_lat)
