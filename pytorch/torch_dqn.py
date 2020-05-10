@@ -14,7 +14,7 @@ import torchvision.transform as T
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-env gym.make("").unwrapped 
+env = gym.make("").unwrapped 
 
 is_ipytohn = "inline" in matplotlib.get_backend()
 if is_ipython:
@@ -40,5 +40,3 @@ class replay_memories(object):
         
         def __len__(self):
                 return len(self.memory)
-
-        def 
