@@ -1,7 +1,7 @@
 import torch
 
 dtype = torch.float
-device = torch.device('cuda')
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # N = batch size, D_in = input dimension
 # H = hidden dimension, D_out = output dimension
