@@ -2,9 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-
 class Net(nn.Module):
-
     def __init__(self):
         super(Net, self).__init__()
         # 1 input image channel, 6 output channels, 5x5 square convolution
@@ -26,7 +24,7 @@ class Net(nn.Module):
         x = F.relu(self.fc2(x))
         x = self.fc3(x)
         return x
-
+        
     def num_flat_features(self, x):
         size = x.size()[1:]  # all dimensions except the batch dimension
         num_features = 1
@@ -34,6 +32,6 @@ class Net(nn.Module):
             num_features *= s
         return num_features
 
-
 net = Net()
 print(net)
+

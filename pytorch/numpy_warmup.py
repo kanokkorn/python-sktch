@@ -13,7 +13,7 @@ w1 = np.random.randn(D_in, H)
 w2 = np.random.randn(H, D_out)
 
 learning_rate = 1e-6
-for p in range(500):
+for p in range(5000):
   # forward pass
   h = x.dot(w1) 
   h_relu = np.maximum(h, 0)

@@ -2,7 +2,7 @@ import torch
 
 dtype = torch.float
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
+print(device)
 # N = batch size, D_in = input dimension
 # H = hidden dimension, D_out = output dimension
 N, D_in, H, D_out = 64, 1000, 100, 10
@@ -16,7 +16,7 @@ w1 = torch.randn(D_in, H, device=device, dtype=dtype)
 w2 = torch.randn(H, D_out, device=device, dtype=dtype)
 
 learning_rate = 1e-6
-for t in range(500):
+for t in range(5000):
   # forward pass
   h = x.mm(w1)
   h_relu = h.clamp(min=0)
