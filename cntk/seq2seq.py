@@ -40,10 +40,6 @@ from cntk.ops.functions import CloneMethod, load_model, Function
 from cntk.initializer import glorot_uniform
 from cntk.logging import log_number_of_parameters, ProgressPrinter
 from cntk.logging.graph import plot
-from cntk.layers import *
-from cntk.layers.sequence import *
-from cntk.layers.models.attention import *
-from cntk.layers.typing import *
 
 ########################
 # variables and stuff  #
@@ -92,17 +88,17 @@ def model_path(epoch):
 
 
 def create_reader(path, is_training):
-    return MinibatchSource(
-        CTFDeserializer(
-            path,
-            StreamDefs(
-                features=StreamDef(field="S0", shape=input_vocab_dim, is_sparse=True),
-                labels=StreamDef(field="S1", shape=label_vocab_dim, is_sparse=True),
-            ),
+  return MinibatchSource(
+    CTFDeserializer(
+      path,
+      StreamDefs(
+        features=StreamDef(field="S0", shape=input_vocab_dim, is_sparse=True),
+        labels=StreamDef(field="S1", shape=label_vocab_dim, is_sparse=True),
         ),
-        randomize=is_training,
-        max_sweeps=INFINITELY_REPEAT if is_training else 1,
-    )
+    ),
+    randomize=is_training,
+    max_sweeps=INFINITELY_REPEAT if is_training else 1,
+  )
 
 
 ########################
@@ -408,9 +404,6 @@ def evaluate_decoding(reader, s2smodel, i2w):
 # helper function to create a dummy Trainer that one can call test_minibatch() on
 # TODO: replace by a proper such class once available
 def Evaluator(model, criterion):
-    from cntk import Trainer
-    from cntk.learners import momentum_sgd, momentum_schedule_per_sample
-
     loss, metric = Trainer._get_loss_metric(criterion)
     parameters = set(loss.parameters)
     if model:
@@ -453,7 +446,7 @@ def evaluate_metric(reader, s2smodel, num_minibatches=None):
         total_error += mb_error * num_samples
         total_samples += num_samples
 
-        if num_minibatches != None:
+        if num_minibatches is not None:
             num_minibatches -= 1
             if num_minibatches == 0:
                 break
@@ -476,7 +469,7 @@ def translate(
     vdict = {v: i for i, v in enumerate(vocab)}
     try:
         w = [vdict["<s>"]] + [vdict[c] for c in tokens] + [vdict["</s>"]]
-    except:
+    except Exception as e:
         print("Input contains an unexpected token.")
         return []
 
@@ -621,4 +614,3 @@ if __name__ == "__main__":
 
     # try the model out in an interactive session
     interactive_session(model, vocab, i2w, show_attention=True)
-
