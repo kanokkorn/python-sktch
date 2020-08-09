@@ -9,7 +9,8 @@ from torchvision import datasets, models, transforms
 
 class classify:
   def image(self, img_path):
-    img = Image.open(str(img_path))
+    mobilenet = models.mobilenet_v2(pretrained=True)
+    img = Image.open(img_path)
     transform = transforms.Compose([
       transforms.Resize(size=224),
       transforms.CenterCrop(size=224),
@@ -20,6 +21,14 @@ class classify:
         )  
     ])
     img_tensor = transform(img)
+    batch_trans = torch.unsqueeze(img_tensor, 0)
+    mobilenet.eval()
+    output = mobilenet(batch_trans)
+    with open('./imagenet-classes.txt') as f:
+      labels = [line.strip() for line in f.readlines()]
+    _, idx = torch.max(output, 1)
+    percentage = torch.nn.functional.softmax(output, dim=1)[0] * 100
+    print(labels[idx[0]], percentage[idx[0]].item())
 
 if __name__ == '__main__':
   detect = classify()
