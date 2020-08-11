@@ -1,5 +1,4 @@
 import tensorflow as tf
-import numpy
 
 # Enable Eager execution (https://stackoverflow.com/questions/52357542/)
 tf.enable_eager_execution()
@@ -28,3 +27,4 @@ probability_model = tf.keras.Sequential([
     tf.keras.layers.Softmax()
     ])
 probability_model(x_test[:5])
+
