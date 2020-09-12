@@ -33,4 +33,3 @@ class classify:
 if __name__ == '__main__':
   detect = classify()
   detect.image('../img/shyaro.jpg')
-
