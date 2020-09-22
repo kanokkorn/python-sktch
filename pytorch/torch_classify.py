@@ -1,11 +1,6 @@
 import torch
-import torchvision
-from torchvision.transforms import ToTensor
-from torch.autograd import Variable
-import numpy as np
-
 from PIL import Image
-from torchvision import datasets, models, transforms
+from torchvision import models, transforms
 
 class classify:
   def image(self, img_path):
