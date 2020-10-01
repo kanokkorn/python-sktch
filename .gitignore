@@ -1,8 +1,14 @@
-/.vscode/
-/pyautogui/image/
 *.*swp
 *.*orig
-/pytorch/__pycache__/
 *.*txt
+*.mp4
+*.avi
+*.flac
+*.xml
+*.yml
+/.vscode/
+/pyautogui/image/
+/pytorch/__pycache__/
 /opencv/image_save/
 /opencv/lbp_folder/
+/opencv/.ipynb_checkpoints/
