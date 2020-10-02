@@ -1,3 +1,4 @@
+# run and compare to numpy_warmup to see the different
 import torch
 
 dtype = torch.float
